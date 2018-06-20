@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="toDo" ng-controller="toDoCtrl">
+  <head>
+    <title>Tasks App</title>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>To-do List</h1>
+      <table>
+        <tr>
+            <td>
+              <h3>Active Task {{ tasks.length }}</h3>
+            </td>
+        </tr>
+        <tr> 
+          <td>         
+            <span ng-hide="tasks.length">All the task are completed!</span>
+            <div ng-repeat="task in tasks">
+              <input type="checkbox" ng-click="completedTask($index, tasks, completed)" /> {{ task }}<br />
+            </div>
+          </td> 
+         </tr>   
+        </td><td>
+          <div ng-show="completed.length">
+            <h3> ({{ completed.length }}) Completed</h3>
+              <div ng-repeat="task in completed">
+                <input type="checkbox" ng-click="completedTask($index, completed, tasks)" checked /> <span class="end">{{ task }}</span><br />
+              </div>
+          </div>
+        </td></tr>
+      </table>
+    <h2>Add a Task</h2>
+      <form ng-submit="newTask()">
+        <input type="text" placeholder="Description" ng-model="newTaskName" />
+        <input type="submit" value="Add" />
+      </form>
+  </body>
+</html>
